@@ -1,0 +1,117 @@
+:root {
+  --chalk: #f4f1ea;
+  --paper: #fffdf8;
+  --ink: #23211e;
+  --muted: #7a746a;
+  --line: #e2ddd2;
+  --accent: #e2572b;
+  --accent-ink: #fff;
+  --ok: #2f8f5b;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--chalk);
+  color: var(--ink);
+  font: 15px/1.45 "Segoe UI", system-ui, -apple-system, sans-serif;
+}
+
+.top {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 18px 28px;
+  background: var(--ink); color: var(--chalk);
+}
+.brand { display: flex; gap: 14px; align-items: center; }
+.logo {
+  display: grid; place-items: center;
+  width: 44px; height: 44px; border-radius: 10px;
+  background: var(--accent); color: #fff; font-size: 22px;
+}
+.brand h1 { margin: 0; font-size: 26px; letter-spacing: .5px; }
+.brand p { margin: 0; color: #b9b2a5; font-size: 13px; }
+.status { font-size: 13px; color: #b9b2a5; }
+.status.ok::before { content: "● "; color: #5fd08f; }
+.status.bad::before { content: "● "; color: #ff6b5b; }
+
+main {
+  display: grid; grid-template-columns: 330px 1fr; gap: 22px;
+  padding: 22px 28px; max-width: 1280px; margin: 0 auto;
+}
+@media (max-width: 860px) { main { grid-template-columns: 1fr; padding: 16px; } }
+
+.controls { display: flex; flex-direction: column; gap: 12px; }
+
+.card {
+  background: var(--paper); border: 1px solid var(--line); border-radius: 12px;
+  padding: 14px 16px; display: flex; flex-direction: column; gap: 8px;
+}
+.card.accent { border-color: var(--accent); }
+.card h2 { margin: 0; font-size: 15px; }
+.hint { margin: 0; color: var(--muted); font-size: 13px; }
+.row { display: flex; gap: 10px; }
+.row label { flex: 1; }
+label { display: flex; flex-direction: column; gap: 3px; font-size: 13px; color: var(--muted); }
+
+select, input {
+  font: inherit; color: var(--ink);
+  padding: 7px 9px; border: 1px solid var(--line); border-radius: 8px; background: #fff;
+}
+button {
+  font: inherit; font-weight: 600; cursor: pointer;
+  padding: 9px 12px; border: 0; border-radius: 8px;
+  background: var(--ink); color: var(--chalk);
+  transition: transform .05s, background .15s;
+}
+button:hover { background: #3a3732; }
+button:active { transform: translateY(1px); }
+.card.accent button { background: var(--accent); color: var(--accent-ink); }
+
+.result {
+  background: var(--paper); border: 1px solid var(--line); border-radius: 12px;
+  padding: 18px 20px; min-height: 420px; overflow: auto;
+  position: sticky; top: 16px; align-self: start; max-height: calc(100vh - 32px);
+}
+@media (max-width: 860px) { .result { position: static; max-height: none; } }
+.result > h2 { margin: 0 0 14px; font-size: 18px; }
+
+table { width: 100%; border-collapse: collapse; }
+th, td { text-align: left; padding: 8px 10px; border-bottom: 1px solid var(--line); }
+th { font-size: 12px; text-transform: uppercase; letter-spacing: .4px; color: var(--muted); }
+tbody tr.clickable { cursor: pointer; }
+tbody tr.clickable:hover { background: var(--chalk); }
+
+.grade {
+  display: inline-block; min-width: 38px; text-align: center;
+  padding: 2px 8px; border-radius: 6px; font-weight: 700;
+  background: var(--ink); color: #fff;
+}
+.hold { display: inline-flex; align-items: center; gap: 6px; }
+.dot {
+  width: 14px; height: 14px; border-radius: 50%;
+  border: 1px solid rgba(0,0,0,.25);
+}
+.tag { font-size: 12px; color: var(--muted); }
+
+.big {
+  display: grid; grid-template-columns: auto 1fr; gap: 20px; align-items: center;
+  padding: 20px; border-radius: 12px; background: var(--chalk);
+}
+.big .grade { font-size: 32px; padding: 14px 18px; }
+.big h3 { margin: 0 0 4px; font-size: 22px; }
+
+.bar-row { display: grid; grid-template-columns: 50px 1fr 1fr; gap: 12px; align-items: center; margin: 6px 0; }
+.bar { height: 18px; border-radius: 4px; background: var(--ink); min-width: 2px; }
+.bar.asc { background: var(--accent); }
+.bar-wrap { display: flex; align-items: center; gap: 8px; font-size: 13px; }
+.legend { display: flex; gap: 18px; font-size: 13px; color: var(--muted); margin-bottom: 8px; }
+.legend span::before { content: ""; display: inline-block; width: 10px; height: 10px; border-radius: 2px; margin-right: 6px; background: var(--ink); }
+.legend span.asc::before { background: var(--accent); }
+
+.medal { font-weight: 700; }
+.msg { padding: 14px 16px; border-radius: 10px; background: var(--chalk); }
+.msg.ok { border-left: 4px solid var(--ok); }
+.msg.err { border-left: 4px solid var(--accent); }
+.sub { margin-top: 18px; }
+.sub h3 { font-size: 15px; margin: 0 0 8px; }

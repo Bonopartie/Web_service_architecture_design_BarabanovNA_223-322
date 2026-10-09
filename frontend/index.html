@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Скалодром «Зацеп»</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="top">
+    <div class="brand">
+      <span class="logo">▲</span>
+      <div>
+        <h1>Зацеп</h1>
+        <p>трассы, пролазы и рейтинг скалодрома</p>
+      </div>
+    </div>
+    <div id="status" class="status">проверяю API…</div>
+  </header>
+
+  <main>
+    <section class="controls">
+      <div class="card">
+        <h2>Трассы на стене</h2>
+        <label>Сектор
+          <select id="sector"><option value="">все секторы</option></select>
+        </label>
+        <button data-action="routes">Показать трассы</button>
+      </div>
+
+      <div class="card">
+        <h2>Что полезть сегодня</h2>
+        <div class="row">
+          <label>от <select id="minGrade"></select></label>
+          <label>до <select id="maxGrade"></select></label>
+        </div>
+        <button data-action="random">Случайная трасса</button>
+      </div>
+
+      <div class="card">
+        <h2>Свежая накрутка</h2>
+        <label>за последние
+          <select id="freshDays">
+            <option value="3">3 дня</option>
+            <option value="7" selected>7 дней</option>
+            <option value="14">14 дней</option>
+          </select>
+        </label>
+        <button data-action="fresh">Новые трассы</button>
+      </div>
+
+      <div class="card">
+        <h2>Рейтинг</h2>
+        <p class="hint">очки за категорию, онсайт ×1.5, флэш ×1.25</p>
+        <button data-action="leaderboard">Топ за 30 дней</button>
+      </div>
+
+      <div class="card">
+        <h2>Категории</h2>
+        <p class="hint">сколько трасс и пролазов на каждой категории</p>
+        <button data-action="stats">Статистика</button>
+      </div>
+
+      <div class="card accent">
+        <h2>Отметить пролаз</h2>
+        <input id="climber" list="climbers" placeholder="Имя" autocomplete="off">
+        <datalist id="climbers"></datalist>
+        <select id="route"></select>
+        <select id="style">
+          <option>онсайт</option>
+          <option>флэш</option>
+          <option selected>редпоинт</option>
+        </select>
+        <button data-action="add">Записать в базу</button>
+      </div>
+    </section>
+
+    <section class="result">
+      <h2 id="resultTitle">Нажми любую кнопку слева</h2>
+      <div id="result"></div>
+    </section>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>
